@@ -1,34 +1,21 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        String url = "jdbc:mysql://localhost:3306/skillbox?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        String user = "root";
-        String pass = "3s5a6dslipknot";
-
-        try{
-            Connection connection = DriverManager.getConnection(url, user, pass);
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("select name, " +
-                    "(select count(*)/count(distinct(month(subscription_date))) " +
-                    "from subscriptions where courses.id = subscriptions.course_id)" +
-                    " as avgMonth from courses");
-            while (resultSet.next()) {
-                String coursesName = resultSet.getString("name");
-                String date = resultSet.getString("avgMonth");
-                System.out.println(coursesName + " - " + date);
-            }
-            statement.close();
-            resultSet.close();
-            connection.close();
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                .configure("hibernate.cfg.xml").build();
+        Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
+        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+        Session session = sessionFactory.openSession();
+        Purchaselist purchaselist = session.get(Purchaselist.class,"2018-01-15 00:00:00");
+        System.out.println(purchaselist.getStudentName());
+        sessionFactory.close();
     }
 }
