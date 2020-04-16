@@ -14,8 +14,8 @@ public class Main
         Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
         Session session = sessionFactory.openSession();
-        Purchaselist purchaselist = session.get(Purchaselist.class,"2018-01-15 00:00:00");
-        System.out.println(purchaselist.getStudentName());
+        Purchaselist purchaselist = session.get(Purchaselist.class, new PurchaselistId("Лилов Тимофей","Java-разработчик"));
+        System.out.println(purchaselist.getPrice());
         sessionFactory.close();
     }
 }
