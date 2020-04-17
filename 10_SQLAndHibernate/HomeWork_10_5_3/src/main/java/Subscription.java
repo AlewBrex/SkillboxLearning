@@ -1,6 +1,5 @@
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 
@@ -8,28 +7,10 @@ import java.util.Date;
 @Table(name = "Subscriptions")
 public class Subscription
 {
-    @Column(name = "student_id")
-    private int studentId;
-    @Column(name = "course_id")
-    private int courseId;
+    @EmbeddedId
+    SubscriptionId id;
     @Column(name = "subscription_date")
     private Date subscriptionDate;
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    public int getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(int courseId) {
-        this.courseId = courseId;
-    }
 
     public Date getSubscriptionDate() {
         return subscriptionDate;
@@ -38,5 +19,30 @@ public class Subscription
     public void setSubscriptionDate(Date subscriptionDate) {
         this.subscriptionDate = subscriptionDate;
     }
+}
 
+@Embeddable
+class SubscriptionId implements Serializable
+{
+    public SubscriptionId(String studentId, String courseId) {
+        this.studentId = studentId;
+        this.courseId = courseId;
+    }
+    @Column(name = "student_id")
+    private String studentId;
+    @Column(name = "course_id")
+    private String courseId;
+
+    public String getStudentId() {
+        return studentId;
+    }
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+    public String getCourseId() {
+        return courseId;
+    }
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
 }

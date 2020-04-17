@@ -4,7 +4,8 @@ import java.io.Serializable;
 @Entity
 public class Purchaselist
 {
-    @EmbeddedId PurchaselistId id;
+    @EmbeddedId
+    PurchaselistId id;
     private int price;
     @Column(name = "subscription_date")
     private String subscriptionDate ;
