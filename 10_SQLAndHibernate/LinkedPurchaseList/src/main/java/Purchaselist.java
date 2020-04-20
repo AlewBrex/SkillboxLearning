@@ -1,5 +1,6 @@
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class Purchaselist
@@ -7,7 +8,7 @@ public class Purchaselist
     @EmbeddedId PurchaselistId id;
     private int price;
     @Column(name = "subscription_date")
-    private String subscriptionDate ;
+    private Date subscriptionDate ;
 
     public int getPrice() {
         return price;
@@ -15,10 +16,10 @@ public class Purchaselist
     public void setPrice(int price) {
         this.price = price;
     }
-    public String getSubscriptionDate() {
+    public Date getSubscriptionDate() {
         return subscriptionDate;
     }
-    public void setSubscriptionDate(String subscriptionDate) {
+    public void setSubscriptionDate(Date subscriptionDate) {
         this.subscriptionDate = subscriptionDate;
     }
 }

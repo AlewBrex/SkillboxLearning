@@ -2,20 +2,18 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-
 @Entity
 @Table(name = "Subscriptions")
 public class Subscription
 {
     @EmbeddedId
-    SubscriptionId id;
+    private SubscriptionId id;
     @Column(name = "subscription_date")
     private Date subscriptionDate;
 
     public Date getSubscriptionDate() {
         return subscriptionDate;
     }
-
     public void setSubscriptionDate(Date subscriptionDate) {
         this.subscriptionDate = subscriptionDate;
     }
@@ -24,25 +22,25 @@ public class Subscription
 @Embeddable
 class SubscriptionId implements Serializable
 {
-    public SubscriptionId(String studentId, String courseId) {
+    public SubscriptionId(int studentId, int courseId) {
         this.studentId = studentId;
         this.courseId = courseId;
     }
     @Column(name = "student_id")
-    private String studentId;
+    private int studentId;
     @Column(name = "course_id")
-    private String courseId;
+    private int courseId;
 
-    public String getStudentId() {
+    public int getStudentId() {
         return studentId;
     }
-    public void setStudentId(String studentId) {
+    public void setStudentId(int studentId) {
         this.studentId = studentId;
     }
-    public String getCourseId() {
+    public int getCourseId() {
         return courseId;
     }
-    public void setCourseId(String courseId) {
+    public void setCourseId(int courseId) {
         this.courseId = courseId;
     }
 }
