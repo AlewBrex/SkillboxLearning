@@ -5,7 +5,8 @@ import java.util.Date;
 @Entity
 public class Purchaselist
 {
-    @EmbeddedId PurchaselistId id;
+    @EmbeddedId
+    private PurchaselistId id;
     private int price;
     @Column(name = "subscription_date")
     private Date subscriptionDate ;

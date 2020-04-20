@@ -6,7 +6,7 @@ import java.util.Date;
 public class Purchaselist
 {
     @EmbeddedId
-    PurchaselistId id;
+    private PurchaselistId id;
     private int price;
     @Column(name = "subscription_date")
     private Date subscriptionDate ;
