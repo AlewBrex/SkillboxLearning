@@ -13,20 +13,43 @@ public class Main
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure("hibernate.cfg.xml").build();
         Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
-        SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
+        try(SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build())
+        {
+            Session session = sessionFactory.openSession();
+            String hqlStudent = "FROM " + Student.class.getSimpleName();
+            String hqlCourse = "FROM " + Course.class.getSimpleName();
+            String hqlPurchase = "FROM " + Purchaselist.class.getSimpleName();
 
-        Session session = sessionFactory.openSession();
-        String hql = "From " + Course.class.getSimpleName() + " Where price > 120000";
-        List<Course> courses = session.createQuery(hql).getResultList() ;
-        courses.forEach(c-> System.out.println(c.getName() + " - " + c.getPrice()));
+            List<Student> studentList = session.createQuery(hqlStudent).getResultList();
+            List<Course> courseList = session.createQuery(hqlCourse).getResultList();
+            List<Purchaselist> purchaselists = session.createQuery(hqlPurchase).getResultList();
 
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<Course> query = builder.createQuery(Course.class);
-//        Root<Course> root = query.from(Course.class);
-//        query.select(root).where(builder.greaterThan(root.get("price"),100000))
-//                .orderBy(builder.desc(root.get("price")));
-//        List<Course> courseList = session.createQuery(query).setMaxResults(5).getResultList();
-//        courseList.forEach(c -> System.out.println(c.getName() + "  " + c.getPrice()));
-        sessionFactory.close();
+            LinkedPurchaseList linkedPurchaseList = new LinkedPurchaseList();
+
+            for (int i = 0; i < purchaselists.size(); i++) {
+                LinkedPurchaseListId linkedPurchaseListId = new LinkedPurchaseListId();
+                PurchaselistId pd = purchaselists.get(i).getId();
+                String stName = pd.getStudentName();
+                String csName = pd.getCourseName();
+
+                for (int j = 0; j < studentList.size(); j++) {
+                    String nameSt = studentList.get(j).getName();
+                    int idSt = studentList.get(j).getId();
+                    if (stName.equals(nameSt)){
+                        linkedPurchaseListId.setStudentId(idSt);
+                    }
+                }
+                for (int r = 0; r < courseList.size(); r++) {
+                    String nameCs = courseList.get(r).getName();
+                    int idCs = courseList.get(r).getId();
+                    if (csName.equals(nameCs)){
+                        linkedPurchaseListId.setCourseId(idCs);
+                    }
+                }
+                linkedPurchaseList.setId(linkedPurchaseListId);
+            }
+            session.save(linkedPurchaseList);
+            session.close();
+        }
     }
 }

@@ -5,12 +5,20 @@ import java.util.Date;
 @Entity
 public class Purchaselist
 {
+
     @EmbeddedId
     private PurchaselistId id;
     private int price;
     @Column(name = "subscription_date")
     private Date subscriptionDate ;
 
+    public PurchaselistId getId() {
+        return id;
+    }
+
+    public void setId(PurchaselistId id) {
+        this.id = id;
+    }
     public int getPrice() {
         return price;
     }
@@ -27,6 +35,8 @@ public class Purchaselist
 @Embeddable
 class PurchaselistId implements Serializable
 {
+    public PurchaselistId() {
+    }
     public PurchaselistId(String studentName, String courseName) {
         this.studentName = studentName;
         this.courseName = courseName;
