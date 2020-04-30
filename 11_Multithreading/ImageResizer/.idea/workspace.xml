@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7457d19e-13ad-4b3a-92f7-9338e578582d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.idea/java_basics.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../10_SQLAndHibernate/JDBCExperiment/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../10_SQLAndHibernate/JDBCExperiment/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +28,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564647381235" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Deadlock" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
@@ -81,6 +79,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="581" y="112" key="CommitChangelistDialog2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588171597385" />
+    <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1588239861062">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588239861062" />
     <state width="1877" height="258" key="GridCell.Tab.0.bottom" timestamp="1588171477271">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
