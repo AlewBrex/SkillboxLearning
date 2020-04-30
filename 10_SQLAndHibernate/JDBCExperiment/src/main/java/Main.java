@@ -15,7 +15,7 @@ public class Main
         SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
         Session session = sessionFactory.openSession();
         Purchaselist purchaselist = session.get(Purchaselist.class, new PurchaselistId("Лилов Тимофей","Java-разработчик"));
-        System.out.println(purchaselist.getPrice());
+        System.out.println(purchaselist.getSubscriptionDate());
         sessionFactory.close();
     }
 }

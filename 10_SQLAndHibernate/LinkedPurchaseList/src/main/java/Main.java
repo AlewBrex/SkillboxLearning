@@ -37,6 +37,7 @@ public class Main
                     int idSt = studentList.get(j).getId();
                     if (stName.equals(nameSt)){
                         linkedPurchaseListId.setStudentId(idSt);
+                        break;
                     }
                 }
                 for (int r = 0; r < courseList.size(); r++) {
@@ -44,6 +45,7 @@ public class Main
                     int idCs = courseList.get(r).getId();
                     if (csName.equals(nameCs)){
                         linkedPurchaseListId.setCourseId(idCs);
+                        break;
                     }
                 }
                 linkedPurchaseList.setId(linkedPurchaseListId);
