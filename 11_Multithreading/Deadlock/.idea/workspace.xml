@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52e3c821-d800-4615-b012-47e56eb3f355" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Friend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ImageResizer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ImageResizer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Transactions/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/Transactions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,9 +24,6 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="Deadlock" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -167,6 +172,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588239881704" />
+    <state width="1877" height="539" key="GridCell.Tab.0.bottom" timestamp="1588752295365">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="539" key="GridCell.Tab.0.bottom/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588752295365" />
+    <state width="1877" height="539" key="GridCell.Tab.0.center" timestamp="1588752295365">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="539" key="GridCell.Tab.0.center/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588752295365" />
+    <state width="1877" height="539" key="GridCell.Tab.0.left" timestamp="1588752295365">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="539" key="GridCell.Tab.0.left/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588752295365" />
+    <state width="1877" height="539" key="GridCell.Tab.0.right" timestamp="1588752295365">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="539" key="GridCell.Tab.0.right/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588752295365" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

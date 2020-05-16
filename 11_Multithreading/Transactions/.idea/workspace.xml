@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d71cd778-2a81-4f76-b368-5740cedb784f" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Deadlock/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Deadlock/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Deadlock/src/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Deadlock/src/Friend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ImageResizer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ImageResizer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Transactions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +43,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FullScreen" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -42,7 +51,7 @@
     <property name="settings.editor.selected.configurable" value="File.Encoding" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.BankTest.testTransfer">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -90,8 +99,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Transactions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankTest.testTransfer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Transactions" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="BankTest" />
+      <option name="METHOD_NAME" value="testTransfer" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,6 +149,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.BankTest.testTransfer" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -133,6 +167,14 @@
       <option name="presentableId" value="Default" />
       <updated>1455787467743</updated>
     </task>
+    <task id="LOCAL-00001" summary="Transactions - implementation of methods">
+      <created>1588923967496</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588923967496</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -143,10 +185,66 @@
       <collection />
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Transactions - implementation of methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Transactions - implementation of methods" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1588923478667">
+    <state x="552" y="166" key="#Plugins" timestamp="1589471169443">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588923478667" />
+    <state x="552" y="166" key="#Plugins/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589471169443" />
+    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1589375456032">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589375456032" />
+    <state x="683" y="214" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1588924637606">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="683" y="214" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588924637606" />
+    <state x="584" y="112" key="CommitChangelistDialog2" timestamp="1588923966585">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="584" y="112" key="CommitChangelistDialog2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588923966585" />
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom" timestamp="1589613736238">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="178" key="GridCell.Tab.0.bottom/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613736238" />
+    <state width="1877" height="178" key="GridCell.Tab.0.center" timestamp="1589613736237">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="178" key="GridCell.Tab.0.center/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613736237" />
+    <state width="1877" height="178" key="GridCell.Tab.0.left" timestamp="1589613736237">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="178" key="GridCell.Tab.0.left/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613736237" />
+    <state width="1877" height="178" key="GridCell.Tab.0.right" timestamp="1589613736237">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="178" key="GridCell.Tab.0.right/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613736237" />
+    <state width="1877" height="175" key="GridCell.Tab.1.bottom" timestamp="1589613425990">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="175" key="GridCell.Tab.1.bottom/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613425990" />
+    <state width="1877" height="175" key="GridCell.Tab.1.center" timestamp="1589613425990">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="175" key="GridCell.Tab.1.center/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613425990" />
+    <state width="1877" height="175" key="GridCell.Tab.1.left" timestamp="1589613425989">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="175" key="GridCell.Tab.1.left/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613425989" />
+    <state width="1877" height="175" key="GridCell.Tab.1.right" timestamp="1589613425990">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="175" key="GridCell.Tab.1.right/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589613425990" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1588923980795">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588923980795" />
+    <state x="616" y="243" key="run.anything.popup" timestamp="1589377555899">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="616" y="243" key="run.anything.popup/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1589377555899" />
   </component>
 </project>

@@ -2,11 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7457d19e-13ad-4b3a-92f7-9338e578582d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Deadlock/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Deadlock/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Deadlock/src/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Deadlock/src/Friend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Transactions/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/Transactions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Bank.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,47 +90,55 @@
       <option name="project" value="LOCAL" />
       <updated>1588257631581</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ImageResizer - done(refresh)">
+      <created>1588490512823</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588490512824</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ImageResizer - done!" />
     <MESSAGE value="ImageResizer - done(update)" />
-    <option name="LAST_COMMIT_MESSAGE" value="ImageResizer - done(update)" />
+    <MESSAGE value="ImageResizer - done(refresh)" />
+    <option name="LAST_COMMIT_MESSAGE" value="ImageResizer - done(refresh)" />
   </component>
   <component name="WindowStateProjectService">
     <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser" timestamp="1587470674273">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="765" y="241" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1587470674273" />
-    <state x="581" y="112" key="CommitChangelistDialog2" timestamp="1588257630904">
+    <state x="581" y="112" width="1216" height="826" key="CommitChangelistDialog2" timestamp="1588490511608">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="581" y="112" key="CommitChangelistDialog2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588257630904" />
+    <state x="581" y="112" width="1216" height="826" key="CommitChangelistDialog2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588490511608" />
     <state x="740" y="280" key="FileChooserDialogImpl" timestamp="1588239861062">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588239861062" />
-    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1588490344726">
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom" timestamp="1588503460849">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="229" key="GridCell.Tab.0.bottom/0.0.1920.1050/0.-1080.1920.1050@0.-1080.1920.1050" timestamp="1588101522462" />
-    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588490344726" />
-    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1588490344725">
+    <state width="1877" height="338" key="GridCell.Tab.0.bottom/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588503460849" />
+    <state width="1877" height="338" key="GridCell.Tab.0.center" timestamp="1588503460849">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="229" key="GridCell.Tab.0.center/0.0.1920.1050/0.-1080.1920.1050@0.-1080.1920.1050" timestamp="1588101522462" />
-    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588490344725" />
-    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1588490344725">
+    <state width="1877" height="338" key="GridCell.Tab.0.center/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588503460849" />
+    <state width="1877" height="338" key="GridCell.Tab.0.left" timestamp="1588503460849">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="229" key="GridCell.Tab.0.left/0.0.1920.1050/0.-1080.1920.1050@0.-1080.1920.1050" timestamp="1588101522462" />
-    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588490344725" />
-    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1588490344725">
+    <state width="1877" height="338" key="GridCell.Tab.0.left/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588503460849" />
+    <state width="1877" height="338" key="GridCell.Tab.0.right" timestamp="1588503460849">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1877" height="229" key="GridCell.Tab.0.right/0.0.1920.1050/0.-1080.1920.1050@0.-1080.1920.1050" timestamp="1588101522462" />
-    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588490344725" />
+    <state width="1877" height="338" key="GridCell.Tab.0.right/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588503460849" />
     <state width="1877" height="352" key="GridCell.Tab.1.bottom" timestamp="1587498218114">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -142,10 +159,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="170" key="SettingsEditor/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1587468345476" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1588257640257">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1588490524344">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588257640257" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/0.-1080.1920.1050@0.0.1920.1050" timestamp="1588490524344" />
   </component>
   <component name="masterDetails">
     <states>
