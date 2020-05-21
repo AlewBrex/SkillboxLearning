@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BankTest extends TestCase
@@ -7,6 +8,8 @@ public class BankTest extends TestCase
     Bank bank;
     ArrayList<Thread> threads;
     ConcurrentHashMap<String, Account> accounts;
+    ArrayList<String> stringList;
+    ArrayList<Account> accountArrayList;
 
     @Override
     protected void setUp() throws Exception
@@ -14,71 +17,45 @@ public class BankTest extends TestCase
         bank = new Bank();
         accounts = new ConcurrentHashMap<>();
 
-        String accountOne = "one";
-        String accountTwo = "two";
-        String accounTree = "tree";
-        String accountFour = "four";
-        String accountFive = "five";
-        String accountSix = "six";
-        String accountSeven = "seven";
-        String accountEight = "eight";
-        String accountNine = "nine";
-        String accountTen = "ten";
+        stringList = new ArrayList<>();
+        for (int j = 1; j <= 10; j++) {
+            stringList.add(Integer.toString(j));
+        }
 
-        Account one = new Account(840000L);
-        Account two = new Account(760000L);
-        Account tree = new Account(830000L);
-        Account four = new Account(973000L);
-        Account five = new Account(474000L);
-        Account six = new Account(267000L);
-        Account seven = new Account(633000L);
-        Account eight = new Account(176000L);
-        Account nine = new Account(999000L);
-        Account ten = new Account(598000L);
+        accountArrayList = new ArrayList<>();
+        for (int l = 0; l < 10; l++) {
+            accountArrayList.add(new Account(888000L));
+        }
 
-        accounts.put(accountOne,one);
-        accounts.put(accountTwo,two);
-        accounts.put(accounTree,tree);
-        accounts.put(accountFour,four);
-        accounts.put(accountFive,five);
-        accounts.put(accountSix,six);
-        accounts.put(accountSeven,seven);
-        accounts.put(accountEight,eight);
-        accounts.put(accountNine,nine);
-        accounts.put(accountTen,ten);
+        for (int k = 0; k < 10; k++) {
+            accounts.put(stringList.get(k),accountArrayList.get(k));
+        }
 
         bank.setAccounts(accounts);
     }
 
     public void testTransfer()
     {
+        List<Long> expected = new ArrayList<>();
+        for (int i = 1; i <= accountArrayList.size(); i++) {
+            expected.add(accountArrayList.get(i).getMoney());
+        }
         threads = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            threads.add(new Thread(()->{
-                    bank.transfer("one","two",(long) (53000 * (Math.random())));
-            }));
-            threads.add(new Thread(()->{
-                bank.transfer("tree","one",(long) (34000 * (Math.random())));
-            }));
-            threads.add(new Thread(()->{
-                bank.transfer("ten","eight",(long) (1000 * (Math.random())));
-            }));
-            threads.add(new Thread(()->{
-                bank.transfer("two","tree",(long) (33000 * (Math.random())));
-            }));
-            threads.add(new Thread(()->{
-                bank.transfer("five","ten",(long) (5000 * (Math.random())));
-            }));
-            threads.add(new Thread(()->{
-                bank.transfer("four","one",(long) (42000 * (Math.random())));
-            }));threads.add(new Thread(()->{
-                bank.transfer("seven","nine",(long) (132000 * (Math.random())));
-            }));
-            threads.add(new Thread(()->{
-                bank.transfer("nine","six",(long) (331000 * (Math.random())));
-            }));
+        for (int i = 0; i < 100; i++) {
+            for (int e = 1; e <= 10; e++) {
+                int finalE = e;
+                threads.add(new Thread(()->{
+                    bank.transfer(stringList.get(finalE),stringList.get(11-finalE),88000L);
+                }));
+            }
         }
         threads.forEach(Thread::start);
+        List<Long> actual = new ArrayList<>();
+        for (int i = 1; i <= stringList.size(); i++) {
+            String s = stringList.get(i);
+            actual.add(bank.getBalance(s));
+        }
+        assertEquals(expected,actual);
     }
 
     @Override
