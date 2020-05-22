@@ -1,6 +1,6 @@
 import junit.framework.TestCase;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BankTest extends TestCase
@@ -36,24 +36,30 @@ public class BankTest extends TestCase
 
     public void testTransfer()
     {
-        List<Long> expected = new ArrayList<>();
-        for (int i = 1; i <= accountArrayList.size(); i++) {
-            expected.add(accountArrayList.get(i).getMoney());
+        long expected = 0;
+        for (Account account : accountArrayList) {
+            expected += account.getMoney();
         }
         threads = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            for (int e = 1; e <= 10; e++) {
-                int finalE = e;
-                threads.add(new Thread(()->{
-                    bank.transfer(stringList.get(finalE),stringList.get(11-finalE),88000L);
-                }));
-            }
+        for (int i = 0; i < 10000; i++) {
+            threads.add(new Thread(()->
+                    bank.transfer(
+                            stringList.get(new Random().nextInt(stringList.size() - 1)),
+                            stringList.get(new Random().nextInt(stringList.size() - 1)),
+                            (long) (new Random().nextDouble() * 10000))));
         }
         threads.forEach(Thread::start);
-        List<Long> actual = new ArrayList<>();
-        for (int i = 1; i <= stringList.size(); i++) {
-            String s = stringList.get(i);
-            actual.add(bank.getBalance(s));
+        threads.forEach(e -> {
+            try {
+                e.join();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        });
+        long actual = 0;
+        for(String s : stringList)
+        {
+            actual += bank.getBalance(s);
         }
         assertEquals(expected,actual);
     }
