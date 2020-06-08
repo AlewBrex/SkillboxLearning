@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52e3c821-d800-4615-b012-47e56eb3f355" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Transactions/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Friend.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../ImageResizer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../ImageResizer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Transactions/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/Transactions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/Transactions.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/src/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/src/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Transactions/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Transactions/src/test/java/BankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Transactions/src/test/java/BankTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
