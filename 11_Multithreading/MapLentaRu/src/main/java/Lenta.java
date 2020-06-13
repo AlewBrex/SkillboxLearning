@@ -20,9 +20,16 @@ public class Lenta
         this.url = url;
     }
 
+    public TreeSet<Lenta> getLentas() {
+        return lentas;
+    }
+    public void setLentas(TreeSet<Lenta> lentas) {
+        this.lentas = lentas;
+    }
+
     public Set<String> getUrls()
     {
-        Set<String> urls = new HashSet<>();
+        Set<String> urls = new TreeSet<>();
         try
         {
             Document doc = Jsoup.connect(url).get();
@@ -38,12 +45,5 @@ public class Lenta
             e.printStackTrace();
         }
         return urls;
-    }
-
-    public TreeSet<Lenta> getLentas() {
-        return lentas;
-    }
-    public void setLentas(TreeSet<Lenta> lentas) {
-        this.lentas = lentas;
     }
 }

@@ -1,4 +1,3 @@
-import java.io.FileWriter;
 import java.util.*;
 import java.util.concurrent.RecursiveTask;
 
@@ -14,10 +13,8 @@ public class LinkLenta extends RecursiveTask<Lenta>
     @Override
     protected Lenta compute()
     {
-        try(FileWriter writer = new FileWriter("date/map.txt", false))
+        try
         {
-            writer.write(lenta.getUrl() + "\n");
-
             List<LinkLenta> taskList = new ArrayList<>();
 
             for (String link : lenta.getUrls()) {
@@ -26,7 +23,6 @@ public class LinkLenta extends RecursiveTask<Lenta>
                 }
                 synchronized (allUrls) {
                     allUrls.add(link);
-                    writer.write("\t" + link + "\n");
                 }
                 LinkLenta task = new LinkLenta(new Lenta(link));
                 task.fork();
@@ -36,7 +32,6 @@ public class LinkLenta extends RecursiveTask<Lenta>
             for (LinkLenta linkLenta : taskList) {
                 lenta.getLentas().add(linkLenta.join());
             }
-            writer.flush();
         }
          catch (Exception e)
         {
@@ -45,3 +40,7 @@ public class LinkLenta extends RecursiveTask<Lenta>
         return lenta;
     }
 }
+//(FileWriter writer = new FileWriter("date/map.txt", false))
+//        writer.write(lenta.getUrl() + "\n");
+//        writer.write("\t" + link + "\n");
+//        writer.flush();
