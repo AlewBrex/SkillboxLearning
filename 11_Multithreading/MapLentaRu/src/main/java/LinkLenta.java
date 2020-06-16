@@ -40,7 +40,3 @@ public class LinkLenta extends RecursiveTask<Lenta>
         return lenta;
     }
 }
-//(FileWriter writer = new FileWriter("date/map.txt", false))
-//        writer.write(lenta.getUrl() + "\n");
-//        writer.write("\t" + link + "\n");
-//        writer.flush();

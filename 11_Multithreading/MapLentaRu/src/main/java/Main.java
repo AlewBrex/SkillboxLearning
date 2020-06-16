@@ -1,39 +1,18 @@
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.concurrent.ForkJoinPool;
 
 public class Main
 {
-    private static int countTab = -1;
-
     public static void main(String[] args)
     {
+        String path = "date/map.txt";
         String url = "https://lenta.ru/";
         Lenta root = new Lenta(url);
         Lenta lenta = new ForkJoinPool().invoke(new LinkLenta(root));
-        getStr(lenta);
-    }
-
-    public static void getStr(Lenta link)
-    {
-        try(FileWriter writer = new FileWriter("date/map.txt", false))
+        try(FileWriter writer = new FileWriter(path,false))
         {
-            countTab++;
-            for (Lenta s : link.getLentas())
-            {
-                if (!s.getLentas().isEmpty())
-                {
-                    System.out.println(plusTab(s.getUrl(),countTab));
-                    writer.write(plusTab(s.getUrl(),countTab) + "\n");
-                    getStr(s);
-                }
-                else
-                {
-                    System.out.println(plusTab(s.getUrl(),countTab));
-                   writer.write(plusTab(s.getUrl(),countTab) + "\n");
-                }
-            }
-            countTab--;
-            writer.flush();
+            getStr(lenta,0,writer);
         }
         catch (Exception e)
         {
@@ -41,20 +20,24 @@ public class Main
         }
     }
 
+    public static void getStr(Lenta link, int countTab, FileWriter writer) throws IOException
+    {
+        writer.write(plusTab(link.getUrl(),countTab) + "\n");
+        for(Lenta s : link.getLentas())
+        {
+            getStr(s,countTab + 1, writer);
+        }
+    }
+
     public static String plusTab(String tab, int count)
     {
-        if (count >= 1)
+        String oneTab = "\t";
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < count; i++)
         {
-            String oneTab = "\t";
-            if (count == 1)
-            {
-                return oneTab.concat(tab);
-            }
-            return plusTab(oneTab.concat(tab),count - 1);
+            str.append(oneTab);
         }
-        else
-        {
-            return tab;
-        }
+        str.append(tab);
+        return str.toString();
     }
 }
