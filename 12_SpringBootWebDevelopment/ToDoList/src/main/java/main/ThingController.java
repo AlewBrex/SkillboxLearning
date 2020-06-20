@@ -25,7 +25,7 @@ public class ThingController
     @PutMapping("/things/")
     public ResponseEntity update(@RequestBody Thing thing)
     {
-       return null;
+       return ResponseEntity.status(HttpStatus.OK).body(Storage.putThing(thing));
     }
 
     @PutMapping("/things/{id}")
@@ -41,7 +41,6 @@ public class ThingController
         Storage.addThing(thingUp);
         return ResponseEntity.status(HttpStatus.OK).body(thingUp);
     }
-
 
     @PostMapping("/things/{id}")
     public ResponseEntity addId(@PathVariable int id)
