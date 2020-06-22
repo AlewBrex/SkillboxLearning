@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 
-@RestController
+//@RestController
 public class DefaultController
 {
     @RequestMapping("/")

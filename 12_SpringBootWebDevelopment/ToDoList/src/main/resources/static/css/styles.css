@@ -2,8 +2,8 @@
     font-family: Arial;
 }
 
-#book-form {
-    display: none;
+#thing-form {
+    display: content;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -15,22 +15,24 @@
     background-color: #88888878;
 }
 
-#book-form form {
+#thing-form form {
+    display: none;
+    position: absolute;
     background-color: white;
     border: 1px solid #333;
     width: 300px;
     padding: 20px;
 }
 
-#book-form h2 {
+#thing-form h2 {
     margin-top: 0;
 }
 
-#book-form label {
-    display: block;
+#thing-form label {
+    display: flex;
 }
 
-#book-form form > * {
+#thing-form form > * {
     margin-bottom: 5px;
 }
 

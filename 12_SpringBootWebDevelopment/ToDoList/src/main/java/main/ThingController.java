@@ -1,45 +1,64 @@
 package main;
 
 import main.model.Thing;
+import main.model.ThingRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ThingController
 {
+    @Autowired
+    private ThingRepository thingRepository;
+
     @GetMapping("/things/")
     public List<Thing> list()
     {
-        return Storage.getAllThings();
+        Iterable<Thing> iterable = thingRepository.findAll();
+        ArrayList<Thing> arrayList = new ArrayList<>();
+        for (Thing thing : iterable)
+        {
+            arrayList.add(thing);
+        }
+        return arrayList;
     }
 
     @PostMapping("/things/")
-    public int add(Thing thing)
+    public ResponseEntity add(@RequestBody Thing thing)
     {
-        return Storage.addThing(thing);
+        thingRepository.save(thing);
+        return ResponseEntity.status(HttpStatus.OK).body(thing);
     }
 
     @PutMapping("/things/")
     public ResponseEntity update(@RequestBody Thing thing)
     {
-       return ResponseEntity.status(HttpStatus.OK).body(Storage.putThing(thing));
+        Thing thingUp = thingRepository.save(thing);
+        if (thingUp == null)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+       return ResponseEntity.status(HttpStatus.OK).body(thingUp);
     }
 
     @PutMapping("/things/{id}")
     public ResponseEntity updateId(@RequestParam String name,String description, @PathVariable int id)
     {
-        Thing thingUp = Storage.getThing(id);
-        if (thingUp == null)
+        Optional<Thing> thingUpId = thingRepository.findById(id);
+        if (thingUpId == null)
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        thingUp.setName(name);
-        thingUp.setDescription(description);
-        Storage.addThing(thingUp);
-        return ResponseEntity.status(HttpStatus.OK).body(thingUp);
+        thingUpId.get().setName(name);
+        thingUpId.get().setDescription(description);
+        thingRepository.save(thingUpId.get());
+        return new ResponseEntity(thingUpId.get(), HttpStatus.OK);
     }
 
     @PostMapping("/things/{id}")
@@ -49,25 +68,32 @@ public class ThingController
     }
 
     @DeleteMapping("/things/")
-    public void delete()
+    public ResponseEntity delete(@RequestBody Thing thing)
     {
-        Storage.deleteAllThings();
+        thingRepository.delete(thing);
+        return ResponseEntity.status(HttpStatus.OK).body(thing);
     }
 
     @DeleteMapping("/things/{id}")
-    public void delete(@PathVariable int id)
+    public ResponseEntity deleteId(@PathVariable int id)
     {
-        Storage.deleteThing(id);
+        Optional<Thing> deleteThing = thingRepository.findById(id);
+        if (!deleteThing.isPresent())
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+        thingRepository.deleteById(id);
+        return new ResponseEntity(deleteThing.get(),HttpStatus.OK);
     }
 
     @GetMapping("/things/{id}")
     public ResponseEntity get(@PathVariable int id)
     {
-        Thing thing = Storage.getThing(id);
-        if (thing == null)
+        Optional<Thing> optionalThing = thingRepository.findById(id);
+        if (!optionalThing.isPresent())
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return new ResponseEntity(thing,HttpStatus.OK);
+        return new ResponseEntity(optionalThing.get(),HttpStatus.OK);
     }
 }

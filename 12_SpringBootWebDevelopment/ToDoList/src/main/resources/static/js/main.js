@@ -1,7 +1,7 @@
 $(function(){
 
     const appendThing = function(data){
-        var thingCode = '<a href="#" class="book-link" data-id="' +
+        var thingCode = '<a href="#" class="thing-link" data-id="' +
             data.id + '">' + data.name + '</a><br>';
         $('#thing-list')
             .append('<div>' + thingCode + '</div>');
@@ -36,13 +36,13 @@ $(function(){
             url: '/things/' + thingId,
             success: function(response)
             {
-                var code = '<span>Год выпуска:' + response.year + '</span>';
+                var code = '<span>Описание дела:' + response.description + '</span>';
                 link.parent().append(code);
             },
             error: function(response)
             {
                 if(response.status == 404) {
-                    alert('Книга не найдена!');
+                    alert('Дело не найдено!');
                 }
             }
         });
@@ -61,12 +61,12 @@ $(function(){
             {
                 $('#thing-form').css('display', 'none');
                 var thing = {};
-                book.id = response;
+                thing.id = response;
                 var dataArray = $('#thing-form form').serializeArray();
                 for(i in dataArray) {
-                    book[dataArray[i]['name']] = dataArray[i]['value'];
+                    thing[dataArray[i]['name']] = dataArray[i]['value'];
                 }
-                appendBook(book);
+                appendThing(thing);
             }
         });
         return false;
