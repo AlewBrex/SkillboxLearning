@@ -3,7 +3,7 @@
 }
 
 #thing-form {
-    display: content;
+    display: none;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -16,8 +16,6 @@
 }
 
 #thing-form form {
-    display: none;
-    position: absolute;
     background-color: white;
     border: 1px solid #333;
     width: 300px;
@@ -29,7 +27,7 @@
 }
 
 #thing-form label {
-    display: flex;
+    display: block;
 }
 
 #thing-form form > * {
