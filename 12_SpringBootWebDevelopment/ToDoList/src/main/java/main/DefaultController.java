@@ -1,16 +1,15 @@
 package main;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Date;
-
-//@RestController
+@Controller
 public class DefaultController
 {
     @RequestMapping("/")
-    public String index()
+    public String index(Model model)
     {
-        return (new Date()).toString();
+        return "index";
     }
 }

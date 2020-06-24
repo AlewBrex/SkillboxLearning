@@ -39,19 +39,14 @@ public class ThingController
     @PutMapping("/things/")
     public ResponseEntity update(@RequestBody Thing thing)
     {
-        Thing thingUp = thingRepository.save(thing);
-        if (thingUp == null)
-        {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
-       return ResponseEntity.status(HttpStatus.OK).body(thingUp);
+       return ResponseEntity.status(HttpStatus.OK).body(thing);
     }
 
     @PutMapping("/things/{id}")
     public ResponseEntity updateId(@RequestParam String name,String description, @PathVariable int id)
     {
         Optional<Thing> thingUpId = thingRepository.findById(id);
-        if (thingUpId == null)
+        if (thingUpId.isPresent())
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
@@ -83,7 +78,7 @@ public class ThingController
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
         thingRepository.deleteById(id);
-        return new ResponseEntity(deleteThing.get(),HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body(deleteThing.get());
     }
 
     @GetMapping("/things/{id}")
@@ -94,6 +89,6 @@ public class ThingController
         {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return new ResponseEntity(optionalThing.get(),HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.OK).body(optionalThing.get());
     }
 }
