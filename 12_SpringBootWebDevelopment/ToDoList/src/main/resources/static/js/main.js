@@ -45,9 +45,10 @@ $(function(){
     $('#save-thing').click(function()
     {
         var data = $('#thing-form form').serialize();
+
         $.ajax({
             method: "POST",
-            url: '/thing-list/',
+            url: '/things/',
             data: data,
             success: function(response)
             {

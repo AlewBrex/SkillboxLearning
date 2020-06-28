@@ -1,4 +1,4 @@
-package main;
+package main.controllers;
 
 import main.model.Thing;
 import main.model.ThingRepository;
@@ -30,7 +30,7 @@ public class ThingController
     }
 
     @PostMapping("/things/")
-    public ResponseEntity add(@RequestBody Thing thing)
+    public ResponseEntity add(Thing thing)
     {
         thingRepository.save(thing);
         return ResponseEntity.status(HttpStatus.OK).body(thing);
@@ -43,7 +43,7 @@ public class ThingController
     }
 
     @PutMapping("/things/{id}")
-    public ResponseEntity updateId(@RequestParam String name,String description, @PathVariable int id)
+    public ResponseEntity updateId(@RequestParam String name, String description, @PathVariable int id)
     {
         Optional<Thing> thingUpId = thingRepository.findById(id);
         if (thingUpId.isPresent())
