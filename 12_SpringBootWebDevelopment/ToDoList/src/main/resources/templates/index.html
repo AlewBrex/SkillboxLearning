@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>ToDo List</title>
@@ -7,24 +7,26 @@
     <script src="/js/main.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
-<body>
-<h1>Список дел </h1>
-<button id="show-add-thing-form">Новое дело</button>
-<div id="thing-form">
-    <form>
-        <h2>Создание дела</h2>
-        <label>Название дела</label>
-        <input type="text" name="name" value="">
-        <label>Описание дела</label>
-        <input type="text" name="description" value="">
-        <hr>
-        <button id="save-thing">Сохранить</button>
-    </form>
-</div>
-
-<br><br>
-<div id="thing-list">
-
-</div>
-</body>
+    <body>
+    <h1>Список дел (<span th:text="${thingsCount}">0</span>)</h1>
+        <button id="show-add-thing-form">Новое дело</button>
+        <div id="thing-form">
+            <form>
+                <h2>Создание дела</h2>
+                <label>Название дела</label>
+                <input type="text" name="name" value="">
+                <label>Описание дела</label>
+                <input type="text" name="description" value="">
+                <hr>
+                <button id="save-thing">Сохранить</button>
+                <input type="reset"/>
+            </form>
+         </div>
+        <br><br>
+        <div id="thing-list">
+            <div th:each="thing : ${things}">
+                <a href="#" class="thing-link" th:attr="data-id=${thing.id}" th:text="${thing.name}"></a>
+            </div>
+        </div>
+    </body>
 </html>

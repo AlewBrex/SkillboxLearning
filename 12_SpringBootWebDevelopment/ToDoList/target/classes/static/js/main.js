@@ -1,11 +1,18 @@
 $(function(){
 
     const appendThing = function(data){
-        var thingCode = '<a href="#" class="thing-link" data-id="' +
-            data.id + '">' + data.name + '</a>' + '<br>';
+        var thingCode = '<a href="#" class="thing-link" data-id="' + data.id + '">' + data.name + '</a>' + '<br>';
         $('#thing-list')
             .append('<div>' + thingCode + '</div>');
     };
+
+    //Loading books on load page
+//    $.get('/things/', function(response)
+//    {
+//        for(i in response) {
+//            appendBook(response[i]);
+//        }
+//    });
 
     //Show adding book form
     $('#show-add-thing-form').click(function(){
@@ -60,6 +67,9 @@ $(function(){
                     thing[dataArray[i]['name']] = dataArray[i]['value'];
                 }
                 appendThing(thing);
+                function clear() {
+                  document.getElementsByName('#thing-form form')[0].reset();
+                }
             }
         });
         return false;

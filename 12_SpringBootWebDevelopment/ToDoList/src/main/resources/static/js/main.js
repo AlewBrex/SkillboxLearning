@@ -1,11 +1,18 @@
 $(function(){
 
     const appendThing = function(data){
-        var thingCode = '<a href="#" class="thing-link" data-id="' +
-            data.id + '">' + data.name + '</a>' + '<br>';
+        var thingCode = '<a href="#" class="thing-link" data-id="' + data.id + '">' + data.name + '</a>' + '<br>';
         $('#thing-list')
             .append('<div>' + thingCode + '</div>');
     };
+
+    //Loading books on load page
+//    $.get('/things/', function(response)
+//    {
+//        for(i in response) {
+//            appendBook(response[i]);
+//        }
+//    });
 
     //Show adding book form
     $('#show-add-thing-form').click(function(){
