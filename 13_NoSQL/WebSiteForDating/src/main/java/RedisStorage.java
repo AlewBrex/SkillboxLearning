@@ -12,16 +12,11 @@ public class RedisStorage
     private RedissonClient redisson;
     private RKeys rKeys;
     private RScoredSortedSet<String> users;
-    private final static String KEY = "users";
+    private final static String KEY = "user";
 
     private double getTs()
     {
         return new Date().getTime() / 1000;
-    }
-
-    public void listKeys()
-    {
-        rKeys.getKeys().forEach(System.out::println);
     }
 
     public void init()
@@ -43,15 +38,11 @@ public class RedisStorage
         rKeys.delete(KEY);
     }
 
-    public void userLast(int id)
+    public void userLast(String str)
     {
-        users.remove(String.valueOf(id));
-        users.add(getTs(),String.valueOf(id));
-    }
-
-    public void shutdown()
-    {
-        redisson.shutdown();
+        System.out.println("> Пользователь " + str + " оплатил платную услугу");
+        users.remove(str);
+        users.add(getTs(),str);
     }
 
     public void addOnlineUsers(int id)
@@ -59,8 +50,12 @@ public class RedisStorage
         users.add(getTs(),String.valueOf(id));
     }
 
-    public void printUser(int id)
+    public void printUser()
     {
-        System.out.println("На главной странице показываем пользователя " + id);
+        for (String usr : users)
+        {
+            System.out.println("На главной странице показываем пользователя " + usr);
+        }
+
     }
 }

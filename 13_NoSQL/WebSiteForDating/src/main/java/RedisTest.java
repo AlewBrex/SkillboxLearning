@@ -1,11 +1,11 @@
-import java.text.SimpleDateFormat;
 import java.util.Random;
+
+import static java.lang.Thread.sleep;
 
 public class RedisTest
 {
     private static final int users = 20;
-    private static final int sleep = 900;
-    private static final int fortuity = 10;
+    private static final int sleepTime = 1000;
 
     public static void main(String[] args) throws InterruptedException
     {
@@ -16,21 +16,34 @@ public class RedisTest
             redis.addOnlineUsers(i);
         }
 
-        for (;;)
+        new  Thread(() ->
         {
-            for (int i = 1; i <= users; i++)
+            for (;;)
             {
-                redis.printUser(i);
-                Thread.sleep(sleep/2);
-                if (i % fortuity == 0)
-                {
-                    int userId = new Random().nextInt(users);
-                    System.out.println("> Пользователь " + userId + " оплатил платную услугу");
-                    redis.printUser(userId);
-                    redis.userLast(userId);
-                    Thread.sleep(sleep);
+                redis.printUser();
+                try {
+                    sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
-        }
+        }).start();
+
+        new  Thread(() ->
+        {
+            Random random = new Random();
+            for (;;)
+            {
+                if (random.nextInt(100) >= 90)
+                {
+                    redis.userLast(String.valueOf(random.nextInt(20) + 1));
+                    try {
+                        sleep(sleepTime);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
     }
 }
