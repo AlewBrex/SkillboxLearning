@@ -1,21 +1,26 @@
 import com.mongodb.MongoClient;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Accumulators;
+import com.mongodb.client.model.Aggregates;
+import org.bson.BsonDocument;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.function.Consumer;
 
 public class Storage
 {
+    private MongoClient mongoClient;
+    private MongoDatabase database;
     private MongoCollection<Document> marketsCollection;
     private MongoCollection<Document> goodsCollection;
 
     public void init()
     {
-        MongoClient mongoClient = new MongoClient("127.0.0.1",27017);
-        MongoDatabase database = mongoClient.getDatabase("local");
+        mongoClient = new MongoClient("127.0.0.1",27017);
+        database = mongoClient.getDatabase("local");
 
         marketsCollection = database.getCollection("Markets");
         marketsCollection.drop();
@@ -34,7 +39,7 @@ public class Storage
         }
         else
         {
-            dctMarket.append("goods", new ArrayList<String>());
+            dctMarket.append("goodsList", Collections.emptyList());
             marketsCollection.insertOne(dctMarket);
         }
     }
@@ -43,7 +48,8 @@ public class Storage
     {
         Document dctGood = new Document()
                 .append("nameGood", goodName);
-        if (goodsCollection.find(dctGood).cursor().hasNext()) {
+        if (goodsCollection.find(dctGood).cursor().hasNext())
+        {
             System.out.println("Error! Good exists");
         }
         else
@@ -63,11 +69,11 @@ public class Storage
         {
             if (marketsCollection.countDocuments(displayDctMarket) != 0)
             {
-                var findMarket = (Bson)marketsCollection.find(displayDctMarket);
+                var findMarket = (Bson)marketsCollection.find(displayDctMarket).first();
                 var pushGood = new Document()
                         .append("$push", new Document()
-                                .append("goods", goodName));
-                marketsCollection.updateOne(findMarket,pushGood);
+                                .append("goodsList", goodName));
+                marketsCollection.updateOne(findMarket, pushGood);
             }
             else
             {
@@ -82,6 +88,62 @@ public class Storage
 
     public void statisticGoods()
     {
+        if (marketsCollection.find().cursor().hasNext())
+        {
+            marketsCollection.aggregate(
+                    Arrays.asList(
+                            Aggregates.lookup("Goods", "goodsList", "nameGood", "goods"),
+                            Aggregates.unwind("$goods"),
+                            Aggregates.group("$nameMarket",
+                                    Accumulators.avg("avgPrice", "$goods.price"),
+                                    Accumulators.min("minPrice", "$goods.price"),
+                                    Accumulators.max("maxPrice", "$goods.price"),
+                                    Accumulators.sum("sum", "$goods.price")
+                            )
+                    )
+            ).forEach((Consumer<Document>) document ->
+            {
+                int count = (int) ((int) document.getInteger("sum") / document.getDouble("avgPrice"));
+                int countLtHundred = getAvg(document.getString("_id"));
 
+                System.out.println("Магазин " + document.getString("_id"));
+                System.out.println("\tВсего в магазине " + document.getString("_id") + " " + count + " товаров");
+                System.out.println("\tСредняя цена товаров в магазине " + document.getString("_id") + " составляет - " + document.getDouble("avgPrice"));
+                System.out.println("\tМинимальная цена товаров в магазине " + document.getString("_id") + " составляет - " + document.getInteger("minPrice"));
+                System.out.println("\tМаксимальная цена товаров в магазине " + document.getString("_id") + " составляет - " + document.getInteger("maxPrice"));
+                System.out.println("\tВсего в магазине " + document.getString("_id") + " " + countLtHundred + " товаров дешевле 100 рублей");
+            });
+        }
+        else {
+            System.out.println("Магазины ещё не заполнены товарами!");
+        }
+    }
+
+
+    private int getAvg(String nameMarket)
+    {
+        final int[] count = {0};
+        BsonDocument query = BsonDocument.parse("{\"goods.price\": {$lt: 100}}");
+        marketsCollection.aggregate(
+                Arrays.asList(
+                        Aggregates.lookup("Goods","goodsList", "nameGood", "goods"),
+                        Aggregates.unwind("$goods"),
+                        Aggregates.match(query),
+                        Aggregates.group("$nameMarket",
+                                Accumulators.avg("avgPrice","$goods.price"),
+                                Accumulators.min("minPrice","$goods.price"),
+                                Accumulators.max("maxPrice","$goods.price"),
+                                Accumulators.sum("sum","$goods.price")
+                        )
+                )
+        ).forEach((Consumer<Document>) document ->
+        {
+            if (document.getString("_id").equals(nameMarket))
+            {
+                int countLtHundred = (int) ((int) document.getInteger("sum") / document.getDouble("avgPrice"));
+                count[0] = countLtHundred;
+            }
+        });
+        return count[0];
     }
 }
