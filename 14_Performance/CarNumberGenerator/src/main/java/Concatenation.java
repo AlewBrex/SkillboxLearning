@@ -5,12 +5,14 @@ public class Concatenation
     {
         long start = System.currentTimeMillis();
 
-        String str = "";
+        StringBuilder builder = new StringBuilder();
+
         for(int i = 0; i < 20_000; i++)
         {
-            str += "some text some text some text";
+            builder.append("some text some text some text");
         }
 
+        System.out.println(builder.toString().length());
         System.out.println((System.currentTimeMillis() - start) + " ms");
     }
 }
