@@ -1,20 +1,12 @@
 public class Main
 {
-    private static final int processor = Runtime.getRuntime().availableProcessors();
+    private static final int countCode = 12;
 
     public static void main(String[] args)
     {
-        for (int i = 0; i < processor; i++)
+        for (int i = 0; i < countCode; i++)
         {
-            Loader loader = new Loader();
-            new Thread(()->
-            {
-                try {
-                    loader.getCarNumber();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
+            new Loader();
         }
     }
 }

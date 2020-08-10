@@ -1,40 +1,58 @@
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.concurrent.RecursiveAction;
 
-public class Loader
+public class Loader extends RecursiveAction
 {
     private static final long start = System.currentTimeMillis();
     private static final char[] letters = {'А', 'В', 'Е', 'К', 'М', 'Н', 'О', 'Р', 'С', 'Т', 'У', 'Х',};
-    private static PrintWriter writer;
-    private static StringBuffer numberStr;
+    private  static int regionCode = 0;
+    private static final int countRegionCode = 100;
 
-
-    public void getCarNumber() throws Exception
+    public Loader()
     {
-        for (int regionCode = 1; regionCode < 100; regionCode++)
-        {
-            writer = new PrintWriter("res/nmbrs_" + regionCode + ".txt");
-            StringBuffer buffer = new StringBuffer();
+        regionCode++;
+        try {
+            getCarNumber();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-            for (int number = 1; number < 1000; number++)
+    @Override
+    protected void compute()
+    {
+        if (regionCode <= countRegionCode)
+        {
+            Loader loader = new Loader();
+            loader.fork();
+        }
+    }
+
+    public void getCarNumber() throws FileNotFoundException
+    {
+        PrintWriter writer = new PrintWriter("res/nmbrs_" + regionCode + ".txt");
+        StringBuffer buffer = new StringBuffer();
+
+        for (int number = 1; number < 1000; number++)
+        {
+            for (char firstLetter : letters)
             {
-                for (char firstLetter : letters)
+                for (char secondLetter : letters)
                 {
-                    for (char secondLetter : letters)
+                    for (char thirdLetter : letters)
                     {
-                        for (char thirdLetter : letters)
-                        {
-                            buffer.append(firstLetter)
-                                .append(padNumber(number, 3))
-                                    .append(secondLetter)
-                                    .append(thirdLetter)
-                                    .append(padNumber(regionCode, 2))
-                                    .append("\n");
-                        }
+                        buffer.append(firstLetter)
+                            .append(padNumber(number, 3))
+                                .append(secondLetter)
+                                .append(thirdLetter)
+                                .append(padNumber(regionCode, 2))
+                                .append("\n");
                     }
                 }
             }
-            writer.write(buffer.toString());
         }
+        writer.write(buffer.toString());
         writer.flush();
         writer.close();
         System.out.println((System.currentTimeMillis() - start) + " ms");
@@ -42,7 +60,7 @@ public class Loader
 
     private static synchronized String padNumber(int number, int numberLength)
     {
-        numberStr = new StringBuffer(Integer.toString(number));
+        StringBuffer numberStr = new StringBuffer(Integer.toString(number));
         int padSize = numberLength - numberStr.length();
 
         for(int i = 0; i < padSize; i++)
