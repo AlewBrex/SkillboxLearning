@@ -36,10 +36,12 @@ public class TimePeriod implements Comparable<TimePeriod>
         if(!dayFormat.format(new Date(from)).equals(dayFormat.format(new Date(visitTime.getTime()))))
             throw new IllegalArgumentException("Visit time must be within the same day as the current TimePeriod!");
         long visitTimeTs = visitTime.getTime();
-        if(visitTimeTs < from) {
+        if(visitTimeTs < from)
+        {
             from = visitTimeTs;
         }
-        if(visitTimeTs > to) {
+        if(visitTimeTs > to)
+        {
             to = visitTimeTs;
         }
     }
@@ -59,10 +61,13 @@ public class TimePeriod implements Comparable<TimePeriod>
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
         Date current = new Date();
         Date compared = new Date();
-        try {
+        try
+        {
             current = dayFormat.parse(dayFormat.format(new Date(from)));
             compared = dayFormat.parse(dayFormat.format(new Date(period.from)));
-        } catch (ParseException e) {
+        }
+        catch (ParseException e)
+        {
             e.printStackTrace();
         }
         return current.compareTo(compared);

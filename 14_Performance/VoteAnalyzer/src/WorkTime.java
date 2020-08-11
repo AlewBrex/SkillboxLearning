@@ -33,7 +33,8 @@ public class WorkTime
         String line = "";
         for(TimePeriod period : periods)
         {
-            if(!line.isEmpty()) {
+            if(!line.isEmpty())
+            {
                 line += ", ";
             }
             line += period;

@@ -23,7 +23,8 @@ public class Voter
     public int hashCode()
     {
         long code = name.hashCode() + birthDay.hashCode();
-        while(code > Integer.MAX_VALUE) {
+        while(code > Integer.MAX_VALUE)
+        {
             code = code/10;
         }
         return (int) code;

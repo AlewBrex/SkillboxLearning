@@ -5,6 +5,8 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +22,24 @@ public class Loader
 
     public static void main(String[] args) throws Exception
     {
-        String fileName = "res/data-1M.xml";
+        String fileName = "res/data-18M.xml";
+
+//        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+//
+//        SAXParserFactory factory = SAXParserFactory.newInstance();
+//        SAXParser parser = factory.newSAXParser();
+//        XMLHandler handler = new XMLHandler();
+//        parser.parse(new File(fileName), handler);
+//
+//        handler.printVotingStationWorkTimes();
+//        System.out.println("--------------");
+//        handler.printDuplicatedVoters();
+//
+//
+//        long secondMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() - firstMem;
+//        System.out.println(secondMem);
+
+        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
         parseFile(fileName);
 
@@ -40,6 +59,8 @@ public class Loader
                 System.out.println("\t" + voter + " - " + count);
             }
         }
+        long secondMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() - firstMem;
+        System.out.println(secondMem);
     }
 
     private static void parseFile(String fileName) throws Exception

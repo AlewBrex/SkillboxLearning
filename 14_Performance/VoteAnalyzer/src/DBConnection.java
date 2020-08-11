@@ -12,7 +12,8 @@ public class DBConnection
     {
         if(connection == null)
         {
-            try {
+            try
+            {
                 connection = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/" + dbName +
                     "?user=" + dbUser + "&password=" + dbPass);
@@ -23,7 +24,9 @@ public class DBConnection
                         "birthDate DATE NOT NULL, " +
                         "`count` INT NOT NULL, " +
                         "PRIMARY KEY(id))");
-            } catch (SQLException e) {
+            }
+            catch (SQLException e)
+            {
                 e.printStackTrace();
             }
         }
@@ -41,7 +44,8 @@ public class DBConnection
                     .execute("INSERT INTO voter_count(name, birthDate, `count`) VALUES('" +
                             name + "', '" + birthDay + "', 1)");
         }
-        else {
+        else
+        {
             Integer id = rs.getInt("id");
             DBConnection.getConnection().createStatement()
                     .execute("UPDATE voter_count SET `count`=`count`+1 WHERE id=" + id);
