@@ -11,8 +11,8 @@ public class XMLHandler extends DefaultHandler
 {
     private Voter voter;
     private static SimpleDateFormat visitDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-    private static HashMap<Voter, Integer> voterCounts;
-    private static HashMap<Integer, WorkTime> voteStationWorkTimes;
+    private static HashMap<Voter, Byte> voterCounts;
+    private static HashMap<Short, WorkTime> voteStationWorkTimes;
 
     public XMLHandler()
     {
@@ -33,7 +33,7 @@ public class XMLHandler extends DefaultHandler
             else if (qName.equals("visit") && voter != null)
             {
                 Date time = visitDateFormat.parse(attributes.getValue("time"));
-                int station = Integer.parseInt(attributes.getValue("station"));
+                Short station = Short.parseShort(attributes.getValue("station"));
 
                 WorkTime workTime = voteStationWorkTimes.get(station);
                 if(workTime == null)
@@ -42,10 +42,8 @@ public class XMLHandler extends DefaultHandler
                     voteStationWorkTimes.put(station, workTime);
                 }
                 workTime.addVisitTime(time.getTime());
-
-                int count = voterCounts.get(voter);
-
-                voterCounts.put(voter, count);
+                byte count = voterCounts.getOrDefault(voter, (byte)0);
+                voterCounts.put(voter, (byte) (count + 1));
             }
         }
         catch (ParseException e)
@@ -79,7 +77,7 @@ public class XMLHandler extends DefaultHandler
     public void printVotingStationWorkTimes()
     {
         System.out.println("Voting station work times: ");
-        for(Integer votingStation : voteStationWorkTimes.keySet())
+        for(Short votingStation : voteStationWorkTimes.keySet())
         {
             WorkTime workTime = voteStationWorkTimes.get(votingStation);
             System.out.println(votingStation + " - " + workTime);

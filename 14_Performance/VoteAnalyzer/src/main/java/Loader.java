@@ -40,10 +40,14 @@ public class Loader
         System.out.println(secondMem);
 
 //        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-//
+
+//        long start = System.currentTimeMillis();
 //        parseFile(fileName);
+//        System.out.println("Parsing duration: " + (System.currentTimeMillis() - start));
 //
-//        //Printing results
+//        DBConnection.printVoterCounts();
+
+        //Printing results
 //        System.out.println("Voting station work times: ");
 //        for(Integer votingStation : voteStationWorkTimes.keySet())
 //        {
@@ -84,6 +88,8 @@ public class Loader
 
             String name = attributes.getNamedItem("name").getNodeValue();
             String birthDay = attributes.getNamedItem("birthDay").getNodeValue();
+
+//            DBConnection.countVoter(name, birthDay);
 
             Voter voter = new Voter(name, birthDay);
             Integer count = voterCounts.get(voter);
