@@ -30,19 +30,18 @@ public class TimePeriod implements Comparable<TimePeriod>
             throw new IllegalArgumentException("Dates 'from' and 'to' must be within ONE day!");
     }
 
-    public void appendTime(Date visitTime)
+    public void appendTime(long visitTime)
     {
         SimpleDateFormat dayFormat = new SimpleDateFormat("yyyy.MM.dd");
-        if(!dayFormat.format(new Date(from)).equals(dayFormat.format(new Date(visitTime.getTime()))))
+        if(!dayFormat.format(new Date(from)).equals(dayFormat.format(new Date(visitTime))))
             throw new IllegalArgumentException("Visit time must be within the same day as the current TimePeriod!");
-        long visitTimeTs = visitTime.getTime();
-        if(visitTimeTs < from)
+        if(visitTime < from)
         {
-            from = visitTimeTs;
+            from = visitTime;
         }
-        if(visitTimeTs > to)
+        if(visitTime > to)
         {
-            to = visitTimeTs;
+            to = visitTime;
         }
     }
 

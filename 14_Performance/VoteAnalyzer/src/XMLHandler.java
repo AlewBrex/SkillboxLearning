@@ -10,10 +10,9 @@ import java.util.HashMap;
 public class XMLHandler extends DefaultHandler
 {
     private Voter voter;
-    private static SimpleDateFormat birthDayFormat = new SimpleDateFormat("yyyy.MM.dd");
     private static SimpleDateFormat visitDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
-    private static HashMap<Voter,Integer> voterCounts;
-    private static HashMap<Integer, WorkTime> voteStationWorkTimes = new HashMap<>();
+    private static HashMap<Voter, Integer> voterCounts;
+    private static HashMap<Integer, WorkTime> voteStationWorkTimes;
 
     public XMLHandler()
     {
@@ -28,7 +27,7 @@ public class XMLHandler extends DefaultHandler
         {
             if (qName.equals("voter"))
             {
-                Date birthDay = birthDayFormat.parse(attributes.getValue("birthDay"));
+                String birthDay = attributes.getValue("birthDay");
                 voter = new Voter(attributes.getValue("name"), birthDay);
             }
             else if (qName.equals("visit") && voter != null)
@@ -44,8 +43,9 @@ public class XMLHandler extends DefaultHandler
                 }
                 workTime.addVisitTime(time.getTime());
 
-                int count = voterCounts.getOrDefault(voter,0);
-                voterCounts.put( voter, count + 1);
+                int count = voterCounts.get(voter);
+
+                voterCounts.put(voter, count);
             }
         }
         catch (ParseException e)
@@ -65,6 +65,7 @@ public class XMLHandler extends DefaultHandler
 
     public void printDuplicatedVoters()
     {
+        System.out.println("Duplicated voters: ");
         for(Voter voter : voterCounts.keySet())
         {
             int count = voterCounts.get(voter);

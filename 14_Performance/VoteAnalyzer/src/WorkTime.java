@@ -1,4 +1,3 @@
-import java.util.Date;
 import java.util.TreeSet;
 
 public class WorkTime
@@ -15,7 +14,7 @@ public class WorkTime
 
     public void addVisitTime(long visitTime)
     {
-        Date visit = new Date(visitTime);
+        long visit = visitTime;
         TimePeriod newPeriod = new TimePeriod(visit, visit);
         for(TimePeriod period : periods)
         {
