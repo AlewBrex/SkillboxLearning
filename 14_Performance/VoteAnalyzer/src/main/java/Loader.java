@@ -23,29 +23,28 @@ public class Loader
     public static void main(String[] args) throws Exception
     {
         String fileName = "res/data-18M.xml";
-
-        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-        SAXParser parser = factory.newSAXParser();
-        XMLHandler handler = new XMLHandler();
-        parser.parse(new File(fileName), handler);
-
-        handler.printVotingStationWorkTimes();
-        System.out.println("--------------");
-        handler.printDuplicatedVoters();
-
-
-        long secondMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() - firstMem;
-        System.out.println(secondMem);
+//
+//        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+//
+//        SAXParserFactory factory = SAXParserFactory.newInstance();
+//        SAXParser parser = factory.newSAXParser();
+//        XMLHandler handler = new XMLHandler();
+//        parser.parse(new File(fileName), handler);
+//
+//        handler.printVotingStationWorkTimes();
+//        System.out.println("--------------");
+//        handler.printDuplicatedVoters();
+//
+//
+//        long secondMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() - firstMem;
+//        System.out.println(secondMem);
 
 //        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
-//        long start = System.currentTimeMillis();
-//        parseFile(fileName);
-//        System.out.println("Parsing duration: " + (System.currentTimeMillis() - start));
-//
-//        DBConnection.printVoterCounts();
+        long start = System.currentTimeMillis();
+        parseFile(fileName);
+        System.out.println("Parsing duration: " + (System.currentTimeMillis() - start) + " ms");
+        DBConnection.printVoterCounts();
 
         //Printing results
 //        System.out.println("Voting station work times: ");
@@ -74,7 +73,7 @@ public class Loader
         Document doc = db.parse(new File(fileName));
 
         findEqualVoters(doc);
-        fixWorkTimes(doc);
+//        fixWorkTimes(doc);
     }
 
     private static void findEqualVoters(Document doc) throws Exception
@@ -89,12 +88,13 @@ public class Loader
             String name = attributes.getNamedItem("name").getNodeValue();
             String birthDay = attributes.getNamedItem("birthDay").getNodeValue();
 
-//            DBConnection.countVoter(name, birthDay);
+            DBConnection.countVoter(name, birthDay);
 
-            Voter voter = new Voter(name, birthDay);
-            Integer count = voterCounts.get(voter);
-            voterCounts.put(voter, count == null ? 1 : count + 1);
+//            Voter voter = new Voter(name, birthDay);
+//            Integer count = voterCounts.get(voter);
+//            voterCounts.put(voter, count == null ? 1 : count + 1);
         }
+        DBConnection.executeMultiInsert();
     }
 
     private static void fixWorkTimes(Document doc) throws Exception
