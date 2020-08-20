@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -22,29 +23,51 @@ public class Loader
 
     public static void main(String[] args) throws Exception
     {
-        String fileName = "res/data-18M.xml";
-//
-//        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-//
-//        SAXParserFactory factory = SAXParserFactory.newInstance();
-//        SAXParser parser = factory.newSAXParser();
-//        XMLHandler handler = new XMLHandler();
-//        parser.parse(new File(fileName), handler);
-//
-//        handler.printVotingStationWorkTimes();
-//        System.out.println("--------------");
-//        handler.printDuplicatedVoters();
-//
-//
-//        long secondMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() - firstMem;
-//        System.out.println(secondMem);
-
-//        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-
+        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         long start = System.currentTimeMillis();
-        parseFile(fileName);
+        String fileName = "res/data-1572M.xml";
+
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+        SAXParser parser = factory.newSAXParser();
+        XMLHandler handler = new XMLHandler();
+
+//        parser.parse(new File(fileName), handler);
+//        handler.printDuplicatedVoters();
+//        DBConnection.executeMultiInsert();
+
+        Thread thread1 = new Thread(() ->
+        {
+            try {
+                parser.parse(new File(fileName), handler);
+                handler.printDuplicatedVoters();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread1.start();
+//
+        Thread thread2 = new Thread(() -> {
+            try {
+                DBConnection.executeMultiInsert();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+        thread2.start();
+//
+//        thread1.join();
+//        thread2.join();
+
         System.out.println("Parsing duration: " + (System.currentTimeMillis() - start) + " ms");
-        DBConnection.printVoterCounts();
+        long secondMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() - firstMem;
+        System.out.println(secondMem);
+
+//        long firstMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
+
+//        long start = System.currentTimeMillis();
+//        parseFile(fileName);
+//        System.out.println("Parsing duration: " + (System.currentTimeMillis() - start) + " ms");
+//        DBConnection.printVoterCounts();
 
         //Printing results
 //        System.out.println("Voting station work times: ");
@@ -89,12 +112,15 @@ public class Loader
             String birthDay = attributes.getNamedItem("birthDay").getNodeValue();
 
             DBConnection.countVoter(name, birthDay);
-
+            if (i % 1000 == 0 || (i == votersCount - 1))
+            {
+                DBConnection.executeMultiInsert();
+            }
 //            Voter voter = new Voter(name, birthDay);
 //            Integer count = voterCounts.get(voter);
 //            voterCounts.put(voter, count == null ? 1 : count + 1);
         }
-        DBConnection.executeMultiInsert();
+//        DBConnection.executeMultiInsert();
     }
 
     private static void fixWorkTimes(Document doc) throws Exception

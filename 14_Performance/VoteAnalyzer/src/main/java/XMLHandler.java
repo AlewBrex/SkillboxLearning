@@ -28,7 +28,9 @@ public class XMLHandler extends DefaultHandler
             if (qName.equals("voter"))
             {
                 String birthDay = attributes.getValue("birthDay");
+                String voters = attributes.getValue("name");
                 voter = new Voter(attributes.getValue("name"), birthDay);
+                DBConnection.countVoter(voters,birthDay);
             }
             else if (qName.equals("visit") && voter != null)
             {
@@ -46,7 +48,7 @@ public class XMLHandler extends DefaultHandler
                 voterCounts.put(voter, (byte) (count + 1));
             }
         }
-        catch (ParseException e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
