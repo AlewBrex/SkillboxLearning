@@ -1,5 +1,6 @@
 import org.apache.hadoop.fs.*;
 import sun.security.util.IOUtils;
+//import sun.security.util.IOUtils;
 
 import java.io.*;
 import java.net.URI;
@@ -11,7 +12,6 @@ import java.util.List;
 public class FileAccess
 {
     private FileSystem hdfs;
-    private FSDataOutputStream os;
     /**
      * Initializes the class, using rootPath as "/" directory
      *
@@ -30,7 +30,15 @@ public class FileAccess
      */
     public void create(String path) throws IOException
     {
-        os = hdfs.create(new Path(path));
+        FSDataOutputStream os;
+        if (path.charAt(path.length() - 1) != '/')
+        {
+            os = hdfs.create(new Path(path));
+        }
+        else
+        {
+            os = hdfs.create(new Path(path + '/'));
+        }
         os.close();
     }
 
@@ -43,11 +51,11 @@ public class FileAccess
     public void append(String path, String content) throws IOException
     {
         Path file = new Path(path);
+        FSDataOutputStream os = hdfs.append(file);
         if (!hdfs.exists(file))
         {
             create(path);
         }
-        os = hdfs.append(file);
         os.writeBytes(content);
         os.close();
     }
@@ -68,7 +76,6 @@ public class FileAccess
         {
             strBldr.append(Arrays.toString(brstrg));
         }
-
         return strBldr.toString();
     }
 
@@ -94,12 +101,7 @@ public class FileAccess
      */
     public boolean isDirectory(String path) throws IOException
     {
-        Path file = new Path(path);
-        if (hdfs.isDirectory(file))
-        {
-            return true;
-        }
-        return false;
+        return hdfs.isDirectory(new Path(path));
     }
 
     /**
