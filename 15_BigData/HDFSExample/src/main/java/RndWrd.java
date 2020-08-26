@@ -15,15 +15,15 @@ public class RndWrd
 
     public static void startGen() throws URISyntaxException, IOException
     {
-        FileSystem hdfS = FileSystem.get(new URI(userNamePath),HdfsConfig.getConfig());
-        Path file = new Path("hdfs://7bc3a2b125ba:8020/test/file.txt");
+        FileSystem hdfS = FileSystem.get(new URI("hdfs://e56ca2fd4c9e:8020"),HdfsConfig.getConfig());
+        Path file = new Path(userNamePath);
 
         OutputStream os = hdfS.create(file);
         BufferedWriter br = new BufferedWriter(
                 new OutputStreamWriter(os, "UTF-8")
         );
 
-        for (int i = 0; i < 10_000_000; i++) {
+        for (int i = 0; i < 100_000; i++) {
             br.write(getRandomWord() + " ");
         }
 

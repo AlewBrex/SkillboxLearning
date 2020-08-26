@@ -1,12 +1,11 @@
 import org.apache.hadoop.fs.*;
-import sun.security.util.IOUtils;
+//import sun.security.util.IOUtils;
 //import sun.security.util.IOUtils;
 
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class FileAccess
@@ -30,16 +29,14 @@ public class FileAccess
      */
     public void create(String path) throws IOException
     {
-        FSDataOutputStream os;
         if (path.charAt(path.length() - 1) != '/')
         {
-            os = hdfs.create(new Path(path));
+            hdfs.createNewFile(new Path(path));
         }
         else
         {
-            os = hdfs.create(new Path(path + '/'));
+            hdfs.mkdirs(new Path(path + '/'));
         }
-        os.close();
     }
 
     /**
@@ -66,18 +63,18 @@ public class FileAccess
      * @param path
      * @return
      */
-    public String read(String path) throws IOException
-    {
-        StringBuilder strBldr = new StringBuilder();
-        Path path1 = new Path(path);
-        FSDataInputStream isa = hdfs.open(path1);
-        byte[] brstrg = IOUtils.readNBytes(isa,1024);
-        while (brstrg.length != 0)
-        {
-            strBldr.append(Arrays.toString(brstrg));
-        }
-        return strBldr.toString();
-    }
+//    public String read(String path) throws IOException
+//    {
+//        StringBuilder strBldr = new StringBuilder();
+//        Path path1 = new Path(path);
+//        FSDataInputStream isa = hdfs.open(path1);
+//        byte[] brstrg = IOUtils.readNBytes(isa,1024);
+//        while (brstrg.length != 0)
+//        {
+//            strBldr.append(Arrays.toString(brstrg));
+//        }
+//        return strBldr.toString();
+//    }
 
     /**
      * Deletes file or directory
