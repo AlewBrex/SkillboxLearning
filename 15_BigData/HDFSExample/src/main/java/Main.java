@@ -9,7 +9,8 @@ public class Main
     {
         HdfsConfig.config();
         FileAccess fileAccess = new FileAccess(userNamePath);
-        fileAccess.create("hdfs://e56ca2fd4c9e:8020/test/file.txt");
+        fileAccess.delete("/test/fileWord.txt");
+        fileAccess.create("/test/wordTest");
         RndWrd.startGen();
     }
 }

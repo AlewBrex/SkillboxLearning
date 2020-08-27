@@ -1,17 +1,17 @@
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.List;
 
 public class RndWrd
 {
-    private static String symbols = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private static String userNamePath = "hdfs://e56ca2fd4c9e:8020/test/file.txt";
+    private static String landRoverFile = "resourse/JaguarLand.txt";
 
     public static void startGen() throws URISyntaxException, IOException
     {
@@ -23,23 +23,15 @@ public class RndWrd
                 new OutputStreamWriter(os, "UTF-8")
         );
 
-        for (int i = 0; i < 100_000; i++) {
-            br.write(getRandomWord() + " ");
+        List<String> lines = Files.readAllLines(Paths.get(landRoverFile));
+        for (String strng : lines)
+        {
+            String first = strng.replaceAll("[^A-z\\-\\:ёЁ 0-9]","");
+            br.write(first);
         }
 
         br.flush();
         br.close();
         hdfS.close();
-    }
-
-    private static String getRandomWord()
-    {
-        StringBuilder builder = new StringBuilder();
-        int length = 2 + (int) Math.round(10 * Math.random());
-        int symbolsCount = symbols.length();
-        for(int i = 0; i < length; i++) {
-            builder.append(symbols.charAt((int) (symbolsCount * Math.random())));
-        }
-        return builder.toString();
     }
 }
