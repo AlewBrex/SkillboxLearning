@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ExpandForm">
+  <grid id="27dc6" binding="expandPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+    <constraints>
+      <xy x="20" y="20" width="822" height="400"/>
+    </constraints>
+    <properties>
+      <preferredSize width="242" height="86"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <vspacer id="c959a">
+        <constraints border-constraint="East"/>
+      </vspacer>
+      <vspacer id="af56e">
+        <constraints border-constraint="West"/>
+      </vspacer>
+      <hspacer id="6e857">
+        <constraints border-constraint="North"/>
+      </hspacer>
+      <hspacer id="4f5fe">
+        <constraints border-constraint="South"/>
+      </hspacer>
+      <grid id="fc3ad" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="0">
+        <constraints border-constraint="Center"/>
+        <properties>
+          <minimumSize width="738" height="150"/>
+          <preferredSize width="200" height="55"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <grid id="d78ff" layout-manager="FlowLayout" hgap="10" vgap="10" flow-align="0">
+            <constraints/>
+            <properties>
+              <minimumSize width="780" height="181"/>
+              <preferredSize width="550" height="200"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="63c1b" class="javax.swing.JLabel">
+                <constraints/>
+                <properties>
+                  <preferredSize width="100" height="40"/>
+                  <text value="Fullname"/>
+                </properties>
+              </component>
+              <component id="82d6" class="javax.swing.JTextField" binding="fullName">
+                <constraints/>
+                <properties>
+                  <preferredSize width="400" height="40"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="d5a38" layout-manager="FlowLayout" hgap="50" vgap="50" flow-align="2">
+            <constraints/>
+            <properties>
+              <preferredSize width="550" height="100"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="67f3" class="javax.swing.JButton" binding="expandButton">
+                <constraints/>
+                <properties>
+                  <preferredSize width="120" height="35"/>
+                  <text value="Expand"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
