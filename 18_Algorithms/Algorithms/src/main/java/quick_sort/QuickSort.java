@@ -4,7 +4,8 @@ public class QuickSort
 {
     public static void sort(int[] array)
     {
-        if(array.length <= 1) {
+        if(array.length <= 1)
+        {
             return;
         }
         sort(array, 0, array.length - 1);
@@ -22,9 +23,25 @@ public class QuickSort
 
     private static int partition(int[] array, int from, int to)
     {
+        int pivot = 0;
+        for (int i = from; i <= to; i++)
+        {
+            if (array[i] < array[to])
+            {
+                int temp = array[i];
+                array[i] = array[to];
+                array[to] = temp;
+                pivot++;
+            }
+            if (array[i] == array[to])
+            {
+                int temp = array[to];
+                array[to] = array[i];
+                array[i] = temp;
+            }
+        }
         //TODO: moving values around pivot,
         // return new pivot index
-        return 0;
+        return pivot;
     }
-
 }
