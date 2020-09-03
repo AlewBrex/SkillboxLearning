@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 public class CollapseForm
 {
-    private ExpandForm expandForm = new ExpandForm();
     private JPanel mainPanel;
     private JLabel surName;
     private JTextField surNameField;
@@ -35,8 +34,9 @@ public class CollapseForm
                 else
                 {
                     mainPanel.setVisible(false);
-                    expandForm.setFullName(surNameField.getText() + "\\s"
-                            + firstNameField.getText() + "\\s"
+                    ExpandForm expandForm = new ExpandForm();
+                    expandForm.setFullName(surNameField.getText() + " "
+                            + firstNameField.getText() + " "
                     + middleNameField.getText());
                 }
             }

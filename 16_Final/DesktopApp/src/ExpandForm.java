@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public class ExpandForm
 {
-    private CollapseForm collapseForm = new CollapseForm();
     private JPanel expandPanel;
     private JTextField fullName;
     private JButton expandButton;
@@ -21,6 +20,7 @@ public class ExpandForm
                 if (pattern.matcher(fullName.getText()).find())
                 {
                     expandPanel.setVisible(false);
+                    CollapseForm collapseForm = new CollapseForm();
                     collapseForm.getMainPanel();
                 }
                 else
