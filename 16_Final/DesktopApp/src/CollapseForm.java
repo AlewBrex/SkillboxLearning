@@ -14,31 +14,30 @@ public class CollapseForm
     private JButton collapseButton;
     private JLabel note;
     private JTextField newText;
+    private JFrame jFrame;
 
-    public CollapseForm()
+    public CollapseForm(JFrame frame)
     {
-        collapseButton.addActionListener(new ActionListener()
+        collapseButton.addActionListener(e->
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
+            if (surNameField.getText().isEmpty() ||
+            firstNameField.getText().isEmpty())
             {
-                if (surNameField.getText().isEmpty() ||
-                firstNameField.getText().isEmpty())
-                {
-                    JOptionPane.showMessageDialog(
-                            mainPanel,
-                            "Not all fields are filled",
-                            "Error",
-                            JOptionPane.WARNING_MESSAGE);
-                }
-                else
-                {
-                    mainPanel.setVisible(false);
-                    ExpandForm expandForm = new ExpandForm();
-                    expandForm.setFullName(surNameField.getText() + " "
-                            + firstNameField.getText() + " "
-                    + middleNameField.getText());
-                }
+                JOptionPane.showMessageDialog(
+                        mainPanel,
+                        "Not all fields are filled",
+                        "Error",
+                        JOptionPane.WARNING_MESSAGE);
+            }
+            else
+            {
+                mainPanel.setVisible(false);
+                ExpandForm expandForm = new ExpandForm(frame);
+                expandForm.setFullName(surNameField.getText() + " "
+                        + firstNameField.getText() + " "
+                + middleNameField.getText());
+                jFrame.remove(mainPanel);
+                jFrame.add(expandForm.getExpandPanel());
             }
         });
     }
