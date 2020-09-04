@@ -44,6 +44,5 @@ public class MergeSort
                 array[a++] = right[r++];
             }
         }
-        //TODO
     }
 }

@@ -8,60 +8,75 @@ public class RabinKarpExtended
 {
     private String text;
     private TreeMap<Integer, Integer> number2position;
-    private int r = 256;
-    private int q = 101;
+    private  final int maxPatternSize = 22;
 
 
     public RabinKarpExtended(String text)
     {
         this.text = text;
-        createIndex(text);
+        createIndex();
     }
 
     public List<Integer> search(String query)
     {
         ArrayList<Integer> indices = new ArrayList<>();
-        //TODO: implement search alogorithm
+        if (query.length() > maxPatternSize)
+        {
+            throw new IllegalArgumentException("Размер паттерна превышает 22");
+        }
+        if (query.length() > text.length())
+        {
+            return indices;
+        }
+        
+        String alphabetQuery = textToIndex(query);
+        if (alphabetQuery == null)
+        {
+            return indices;
+        }
+        
+        long patternL = Long.parseLong(alphabetQuery);
+
+        for (int i = 0; i < text.length() - query.length() + 1; i++)
+        {
+            String textSubstring = textToIndex(text.substring(i, i + query.length()));
+            assert textSubstring != null;
+            long substringL = Long.parseLong(textSubstring);
+            if (patternL == substringL)
+            {
+                indices.add(i);
+            }
+        }
         return indices;
     }
 
-    private void createIndex(String strng)
+    private String textToIndex(String text)
     {
-        int rM = 1;
-        int pttrnStrng = strng.length();
-
-        for (int i = 1; i < pttrnStrng - 1; i++)
+        StringBuilder sb = new StringBuilder();
+        for (char c : text.toCharArray())
         {
-            rM = (r * rM) % q;
-        }
-        int strngHash = getPatternHash(strng, pttrnStrng);
-
-        for (int k = 0; k < pttrnStrng; k++)
-        {
-            number2position.put(k, strngHash);
-        }
-        //TODO: implement text indexing
-    }
-
-    private int getPatternHash(String key, int intLength)
-    {
-        int patternHash = 0;
-        for (int j = 0; j < intLength; j++)
-        {
-            patternHash = ((r * patternHash) + key.codePointAt(j)) % q;
-        }
-        return patternHash;
-    }
-
-    private boolean check(String query, int i)
-    {
-        for (int a = 0; a < text.length(); a++)
-        {
-            if (query.charAt(a) != text.charAt(i + a))
+            Integer index = number2position.getOrDefault((int) c, null);
+            if (index == null)
             {
-                return false;
+                System.out.println("Index \"" + c + "\" not found");
+                return null;
             }
+            sb.append(index);
         }
-        return true;
+        return sb.toString();
+    }
+
+    private void createIndex()
+    {
+        number2position = new TreeMap<>();
+        int index = 0;
+        for(char c : text.toCharArray())
+        {
+            number2position.put((int) c, number2position.getOrDefault((int) c, index++));
+        }
+        if (number2position.size() > 10)
+        {
+            throw new IllegalArgumentException("Алфавит не должен превышать 10 символов");
+        }
     }
 }

@@ -4,7 +4,7 @@ public class ArrayMaxValue
 {
     public static int getMaxValue(int[] values)
     {
-        int maxValue = Integer.MIN_VALUE;
+        int maxValue = 0;
 
         if (values != null && values.length > 0)
         {
