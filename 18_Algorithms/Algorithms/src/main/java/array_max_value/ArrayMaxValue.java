@@ -14,6 +14,10 @@ public class ArrayMaxValue
                 {
                     maxValue = value;
                 }
+                if (value < maxValue)
+                {
+                    throw new IllegalArgumentException("Элемент массива имеет недопустимое значение!");
+                }
             }
         }
         return maxValue;
