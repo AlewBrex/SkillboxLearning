@@ -6,7 +6,8 @@ public class SingleLinkedList
 
     public void push(ListItem item)
     {
-        if(top != null) {
+        if(top != null)
+        {
             item.setNext(top);
         }
         top = item;
@@ -25,8 +26,29 @@ public class SingleLinkedList
 
     public void removeTop()
     {
-        if(top != null) {
+        if(top != null)
+        {
             top = top.getNext();
+        }
+    }
+
+    public void removeLast()
+    {
+        if (top != null)
+        {
+            ListItem penultimate = top;
+            ListItem last = top.getNext();
+            while (last != null)
+            {
+                penultimate = penultimate.getNext();
+                last = last.getNext();
+
+                if (last == null)
+                {
+                    penultimate = null;
+                    last = null;
+                }
+            }
         }
     }
 }

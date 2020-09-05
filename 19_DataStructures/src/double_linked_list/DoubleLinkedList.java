@@ -17,33 +17,61 @@ public class DoubleLinkedList
 
     public ListItem popHeadElement()
     {
-        //TODO
-        return null;
+        ListItem item = head;
+        if (head != null)
+        {
+            head.getPrev().setNext(null);
+            head = head.getNext();
+        }
+        return item;
     }
 
     public ListItem popTailElement()
     {
-        //TODO
-        return null;
+        ListItem item = tail;
+        if (tail != null)
+        {
+            tail.getPrev().setNext(null);
+            tail = tail.getPrev();
+        }
+        return item;
     }
 
     public void removeHeadElement()
     {
-        //TODO
+        if (head != null)
+        {
+            head.getPrev().setNext(null);
+            head = head.getNext();
+        }
     }
 
     public void removeTailElement()
     {
-        //TODO
+        if (tail != null)
+        {
+            tail.getPrev().setNext(null);
+            tail = tail.getPrev();
+        }
     }
 
     public void addToHead(ListItem item)
     {
-        //TODO
+        if (head != null)
+        {
+            head.setPrev(item);
+            item.setNext(head);
+        }
+        head = item;
     }
 
     public void addToTail(ListItem item)
     {
-        //TODO
+        if (tail != null)
+        {
+            tail.setNext(item);
+            item.setPrev(tail);
+        }
+        tail = item;
     }
 }
