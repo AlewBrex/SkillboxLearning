@@ -3,10 +3,63 @@ package binary_tree;
 public class Node
 {
     private String data;
-
     private Node parent;
     private Node left;
     private Node right;
 
-    //TODO: create and implement methods
+    public Node(String data)
+    {
+        this.data = data;
+    }
+
+    public String getData()
+    {
+        return data;
+    }
+
+    public void setData(String data)
+    {
+        this.data = data;
+    }
+
+    public Node getParent()
+    {
+        return parent;
+    }
+
+    public void setParent(Node parent)
+    {
+        this.parent = parent;
+    }
+
+    public Node getLeft()
+    {
+        return left;
+    }
+
+    public void setLeft(Node left)
+    {
+        this.left = left;
+    }
+
+    public Node getRight()
+    {
+        return right;
+    }
+
+    public void setRight(Node right)
+    {
+        this.right = right;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Node{" +
+                "data='" + data + '\'' +
+                ", parent=" + parent +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
 }
