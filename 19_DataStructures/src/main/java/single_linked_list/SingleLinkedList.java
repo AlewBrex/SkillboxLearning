@@ -1,5 +1,8 @@
 package single_linked_list;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SingleLinkedList
 {
     private ListItem top;
@@ -37,18 +40,29 @@ public class SingleLinkedList
         if (top != null)
         {
             ListItem penultimate = top;
-            ListItem last = top.getNext();
+            ListItem last = penultimate.getNext();
             while (last != null)
             {
                 penultimate = penultimate.getNext();
                 last = last.getNext();
 
-                if (last == null)
+                if (last.getNext() == null)
                 {
-                    penultimate = null;
+                    penultimate.setNext(null);
                     last = null;
                 }
             }
         }
+    }
+    public List<String> stringList()
+    {
+        List<String> strings = new ArrayList<>();
+        ListItem item = top;
+        while (item != null)
+        {
+            strings.add(item.getData());
+            item = item.getNext();
+        }
+        return strings;
     }
 }

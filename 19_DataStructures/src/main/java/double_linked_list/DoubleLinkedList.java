@@ -20,7 +20,14 @@ public class DoubleLinkedList
         ListItem item = head;
         if (head != null)
         {
-            head.getPrev().setNext(null);
+            if (head.getNext() != null)
+            {
+                head.getNext().setPrev(null);
+            }
+            else
+            {
+                tail = null;
+            }
             head = head.getNext();
         }
         return item;
@@ -29,9 +36,16 @@ public class DoubleLinkedList
     public ListItem popTailElement()
     {
         ListItem item = tail;
-        if (tail != null)
+        if (head != null)
         {
-            tail.getPrev().setNext(null);
+            if (head.getNext() != null)
+            {
+                tail.getPrev().setNext(null);
+            }
+            else
+            {
+                head = null;
+            }
             tail = tail.getPrev();
         }
         return item;
@@ -41,16 +55,30 @@ public class DoubleLinkedList
     {
         if (head != null)
         {
-            head.getPrev().setNext(null);
+            if (head.getNext() != null)
+            {
+                head.getNext().setPrev(null);
+            }
+            else
+            {
+                tail = null;
+            }
             head = head.getNext();
         }
     }
 
     public void removeTailElement()
     {
-        if (tail != null)
+        if (head != null)
         {
-            tail.getPrev().setNext(null);
+            if (head.getNext() != null)
+            {
+                tail.getPrev().setNext(null);
+            }
+            else
+            {
+                head = null;
+            }
             tail = tail.getPrev();
         }
     }
@@ -61,13 +89,14 @@ public class DoubleLinkedList
         {
             head.setPrev(item);
             item.setNext(head);
+            head = item;
         }
         head = item;
     }
 
     public void addToTail(ListItem item)
     {
-        if (tail != null)
+        if (head != null)
         {
             tail.setNext(item);
             item.setPrev(tail);
