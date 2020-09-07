@@ -62,8 +62,14 @@ public class BinaryTree
             {
                 list.add(current);
             }
-            containsNodeRecursive(current.getLeft(), rootNode, list);
-            containsNodeRecursive(current.getRight(), rootNode, list);
+            if (current.getData().compareTo(rootNode.getData()) > 0)
+            {
+                containsNodeRecursive(current.getRight(), rootNode, list);
+            }
+            if (current.getData().compareTo(rootNode.getData()) < 0)
+            {
+                containsNodeRecursive(current.getLeft(), rootNode, list);
+            }
         }
     }
 }
