@@ -91,16 +91,17 @@ public class DoubleLinkedList
             item.setNext(head);
             head = item;
         }
-        head = item;
+        tail = head;
     }
 
     public void addToTail(ListItem item)
     {
-        if (head != null)
+        if (tail != null)
         {
             tail.setNext(item);
             item.setPrev(tail);
+            tail = item;
         }
-        tail = item;
+        head = tail;
     }
 }

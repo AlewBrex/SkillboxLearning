@@ -37,21 +37,26 @@ public class SingleLinkedList
 
     public void removeLast()
     {
+        ListItem penultimate = top;
+        ListItem last = penultimate.getNext();
         if (top != null)
         {
-            ListItem penultimate = top;
-            ListItem last = penultimate.getNext();
+            if (last == null)
+            {
+                top = null;
+            }
             while (last != null)
             {
-                penultimate = penultimate.getNext();
-                last = last.getNext();
-
                 if (last.getNext() == null)
                 {
                     penultimate.setNext(null);
                     last = null;
+                    break;
                 }
+                penultimate = penultimate.getNext();
+                last = last.getNext();
             }
+
         }
     }
     public List<String> stringList()
